@@ -17,14 +17,16 @@ class BankTransactions extends Component {
     isModalOpen: false
   };
 
+  // utility function to open the modal
   openTxnModal() {
     this.setState({ isModalOpen: true });
   }
-
+  // utility function to close the modal
   closeTxnModal() {
     this.setState({ isModalOpen: false });
   }
 
+  // this fn is called when the modal is submitted with txn details to create a bank transaction
   onAddTxn = txn => {
     const { addBankTxn } = this.props;
     addBankTxn(txn);
@@ -36,7 +38,7 @@ class BankTransactions extends Component {
     const { isModalOpen } = this.state;
     return (
       <div className={clz}>
-        <header className='has-background-success'>
+        <header className='has-background-grey'>
           <h4 className='title is-4 has-text-white is-clearfix'>
             Bank Transactions
             <span
@@ -48,7 +50,7 @@ class BankTransactions extends Component {
           </h4>
         </header>
         <table className='table is-striped is-fullwidth'>
-          <thead className='has-background-success'>
+          <thead className='has-background-grey'>
             <tr>
               <th className='has-text-white'>Date</th>
               <th className='has-text-white'>Invoice Id</th>
@@ -89,10 +91,12 @@ class BankTransactions extends Component {
   }
 }
 
+// function used by connect below, will be called with redux state, take the required fields from the state and return them to be used as props by the component
 function mapStateToProps({ bankTxns, invoices }) {
   return { bankTxns, invoices };
 }
 
+//wrapping the BankTransactions components with React Redux connect with maps the state as props for the components
 export default connect(
   mapStateToProps,
   { addBankTxn }

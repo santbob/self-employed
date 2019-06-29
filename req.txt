@@ -1,8 +1,6 @@
 “You have been tasked to create an application that helps self-employees to track their income and expenses in order to give them better insights of their monetary situation, so they can focus on what they love doing without worrying about their finances!
 
-
 In order to do so, you need to create a dashboard which contains a set of widgets:
-
     1. One widget to track the list of transactions from the user’s bank account.
         Each transaction line contains the transaction date; a description; a unique reference number; and a monetary amount which could be positive (cash in) or negative (cash out)
         This widget is read-only: it only displays what it reads from the data source
@@ -17,8 +15,7 @@ In order to do so, you need to create a dashboard which contains a set of widget
         Every field should be modifiable, except the invoice status which is read only and it is worked out in the following way:
             1. An invoice is considered PAID if there is a bank transaction for the same amount, with the bank transaction’s reference number being equal to the invoice’s reference number, and with the bank transaction date being later than the invoice creation date.
             2. An invoice is considered NOT PAID if the previous criteria is not matched.
-
         It should show the number of invoices created in the last 30 days
 
-    Changes in one widget should automatically update other widgets.
-        I.e. the creation of an invoice should affect the summary widget, as this shows the number of invoices created in the month. Likewise, changing the bank transactions widget should also update the invoice and summary widgets.
+Changes in one widget should automatically update other widgets.
+    i.e. the creation of an invoice should affect the summary widget, as this shows the number of invoices created in the month. Likewise, changing the bank transactions widget should also update the invoice and summary widgets.

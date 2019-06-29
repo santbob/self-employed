@@ -10,8 +10,7 @@ const invoicesReducer = (state = [], action) => {
           id: Utils.randomString(16),
           clientName: invoice.clientName,
           created: Date.now(),
-          amount: parseInt(invoice.amount, 10),
-          status: 0
+          amount: parseInt(invoice.amount, 10)
         },
         ...state
       ];

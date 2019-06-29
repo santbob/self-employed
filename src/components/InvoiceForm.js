@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as Utils from '../utils';
 
+// The component used to create or edit an invoice.
 class InvoiceForm extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,7 @@ class InvoiceForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  // the form state
   state = {
     clientName: '',
     amount: 0,
@@ -22,6 +24,7 @@ class InvoiceForm extends Component {
     this.setState({ clientName, amount, id, created });
   }
 
+  // event handler for form submission, validates the input and call back the onSubmit fn props with the entered values
   onFormSubmit(event) {
     event.preventDefault();
     const { onSubmit } = this.props;
@@ -36,7 +39,7 @@ class InvoiceForm extends Component {
       });
     }
   }
-
+  // event handler for cancel button click
   onCancel(event) {
     event.preventDefault();
     const { onClose } = this.props;
@@ -45,6 +48,7 @@ class InvoiceForm extends Component {
     }
   }
 
+  // keep the state updated by listening for changes in the input elements
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;

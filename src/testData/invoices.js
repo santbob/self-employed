@@ -28,12 +28,12 @@ const invoicesTestDataHelper = function() {
     var inv = {
       id: Utils.randomString(16),
       clientName: names[i],
-      amount: Utils.getRandomInt(-5000, 10000),
+      amount: Utils.getRandomInt(-7500, 7500), // invoice amt will be between negative and positive 75 dollars to show case test cases
       status: 0
     };
     //
     var d = new Date();
-    d.setDate(d.getDate() - Utils.getRandomInt(0, 40));
+    d.setDate(d.getDate() - Utils.getRandomInt(0, 40)); // creation date can be upto 40 days in the past.
     inv.created = d.getTime();
     result.push(inv);
   }

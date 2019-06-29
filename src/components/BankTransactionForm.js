@@ -7,13 +7,14 @@ class BankTransactionForm extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-
+  // the form state
   state = {
     description: '',
     invoiceId: '',
     amount: 0
   };
 
+  // event handler for form submission
   onFormSubmit(event) {
     event.preventDefault();
     const { onSubmit } = this.props;
@@ -27,7 +28,7 @@ class BankTransactionForm extends Component {
       });
     }
   }
-
+  // event handler for cancel button click
   onCancel(event) {
     event.preventDefault();
     const { onClose } = this.props;
@@ -35,15 +36,17 @@ class BankTransactionForm extends Component {
       onClose();
     }
   }
-
+  // manages the state of the input elements and keeps the state upto date.
   handleInputChange(event) {
     const { invoices } = this.props;
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+    // read the name and updated value from the input element and create and update obj to update the state
     const update = {
       [name]: value
     };
+    // when the changed field is invoiceId, fetch the invoice amount and update the amount value in the state to ease of use
     if (name === 'invoiceId') {
       update.amount = invoices[target.selectedIndex - 1].amount / 100;
     }

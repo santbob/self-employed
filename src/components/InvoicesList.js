@@ -58,7 +58,7 @@ class InvoicesList extends Component {
 
     return (
       <div className={clz}>
-        <header className='has-background-success'>
+        <header className='has-background-grey-dark'>
           <h4 className='title is-4 has-text-white is-clearfix'>
             Invoices
             <span
@@ -70,7 +70,7 @@ class InvoicesList extends Component {
           </h4>
         </header>
         <table className='table is-fullwidth is-striped'>
-          <thead className='has-background-success'>
+          <thead className='has-background-grey-dark'>
             <tr>
               <th className='has-text-white'>Date</th>
               <th className='has-text-white'>Id</th>
@@ -115,10 +115,12 @@ class InvoicesList extends Component {
   }
 }
 
+// function used by connect below, will be called with redux state, take the required fields from the state and return them to be used as props by the component
 function mapStateToProps({ invoices, bankTxns }) {
   return { invoices, bankTxns };
 }
 
+//wrapping the BankTransactions components with React Redux connect with maps the state as props for the components
 export default connect(
   mapStateToProps,
   { addInvoice, updateInvoice }
