@@ -19,13 +19,13 @@ npm install
 ## Usage
 
 ```sh
-yarn start
+npm start
 ```
 
 ## Run tests
 
 ```sh
-yarn test
+npm test
 ```
 
 ## Author
