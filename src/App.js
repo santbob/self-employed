@@ -1,14 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { ConnectedRouter } from 'connected-react-router';
-import routes from './routes';
+import Header from './components/Header';
+import BankTransactions from './components/BankTransactions';
+import FinancialSummary from './components/FinancialSummary';
+import InvoicesList from './components/InvoicesList';
 
-const App = ({ history }) => {
-  return <ConnectedRouter history={history}>{routes}</ConnectedRouter>;
-};
+const Home = () => (
+  <div>
+    <Header />
+    <div className='container'>
+      <section className='section'>
+        <FinancialSummary />
+      </section>
 
-App.propTypes = {
-  history: PropTypes.object
-};
+      <section className='columns'>
+        <BankTransactions clz='widget column is-half' />
+        <InvoicesList clz='widget column is-half' />
+      </section>
+    </div>
+  </div>
+);
 
-export default App;
+export default Home;

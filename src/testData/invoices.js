@@ -26,7 +26,7 @@ const invoicesTestDataHelper = function() {
   var result = [];
   for (let i = 0; i < names.length; i++) {
     var inv = {
-      id: Utils.randomString(16),
+      id: `i_${Utils.randomString(10)}`,
       clientName: names[i],
       amount: Utils.getRandomInt(-7500, 7500), // invoice amt will be between negative and positive 75 dollars to show case test cases
       status: 0

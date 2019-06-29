@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import App from './App';
-import setupStore, { history } from './setupStore';
+import rootReducer from './reducers';
 import generateTestData from './testData';
 import './index.css';
 
@@ -13,11 +14,11 @@ let launchData = [];
 launchData = generateTestData();
 //console.log(launchData);
 //creates the redux store with all routers connected
-const store = setupStore(launchData);
+const store = createStore(rootReducer, launchData);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App history={history} />
+    <App />
   </Provider>,
   document.getElementById('root')
 );

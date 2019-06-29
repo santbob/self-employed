@@ -5,7 +5,7 @@ const bankTxnsTestDataHelper = function(invoices) {
   for (let i = 0; i < invoices.length - 5; i++) {
     const inv = invoices[i];
     var txn = {
-      id: Utils.randomString(16),
+      id: `b_${Utils.randomString(10)}`,
       description:
         inv.amount >= 0
           ? `Invoice payment by ${inv.clientName}`
