@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+import App from './App';
 import setupStore, { history } from './setupStore';
 import generateTestData from './testData';
 import './index.css';
-let launchData = [];
 
+import * as serviceWorker from './serviceWorker';
+
+let launchData = [];
 // comment this line to not load test data.
 launchData = generateTestData();
 //console.log(launchData);

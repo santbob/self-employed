@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as Utils from '../utils';
 import ReactModal from 'react-modal';
+import * as Utils from '../utils';
 import InvoiceForm from './InvoiceForm';
 import { addInvoice, updateInvoice } from '../actions';
 

@@ -4,9 +4,6 @@
   "private": true,
   "homepage": "https://santbob.github.io/self-employed",
   "dependencies": {
-    "bulma": "^0.7.5",
-    "connected-react-router": "^6.4.0",
-    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-modal": "^3.8.1",
@@ -15,7 +12,9 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "bulma": "^0.7.5",
+    "connected-react-router": "^6.4.0",
+    "gh-pages": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

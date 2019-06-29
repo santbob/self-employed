@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as Utils from '../utils';
 import ReactModal from 'react-modal';
-
+import * as Utils from '../utils';
 import { addBankTxn } from '../actions';
 import BankTransactionForm from './BankTransactionForm';
 
