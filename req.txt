@@ -1,0 +1,24 @@
+“You have been tasked to create an application that helps self-employees to track their income and expenses in order to give them better insights of their monetary situation, so they can focus on what they love doing without worrying about their finances!
+
+
+In order to do so, you need to create a dashboard which contains a set of widgets:
+
+    1. One widget to track the list of transactions from the user’s bank account.
+        Each transaction line contains the transaction date; a description; a unique reference number; and a monetary amount which could be positive (cash in) or negative (cash out)
+        This widget is read-only: it only displays what it reads from the data source
+    2. One widget to track a summary of the user’s financial status.
+        It should show the total monetary amount in the bank account. 
+            1. If the total is greater than a configured positive threshold, the number should be shown in green
+            2. If the total is lower than the same configured threshold from before (but the total is still positive) the number should be shown in yellow
+            3. If the total is lower than 0.00, the number should be shown in red
+        It should show the number of bank movements in the last 30 days
+    3. One widget to manage the list of invoices the user has for her customers, which supports both edit existing invoices as well as creating new ones.
+        Each invoice contains the name of the client; the creation date; a unique reference number; a monetary amount, which could be positive (money to be received) or negative (a refund to the customer); and a status (PAID or NOT PAID).
+        Every field should be modifiable, except the invoice status which is read only and it is worked out in the following way:
+            1. An invoice is considered PAID if there is a bank transaction for the same amount, with the bank transaction’s reference number being equal to the invoice’s reference number, and with the bank transaction date being later than the invoice creation date.
+            2. An invoice is considered NOT PAID if the previous criteria is not matched.
+
+        It should show the number of invoices created in the last 30 days
+
+    Changes in one widget should automatically update other widgets.
+        I.e. the creation of an invoice should affect the summary widget, as this shows the number of invoices created in the month. Likewise, changing the bank transactions widget should also update the invoice and summary widgets.
