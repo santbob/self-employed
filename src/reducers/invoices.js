@@ -7,7 +7,7 @@ const invoicesReducer = (state = [], action) => {
     case ACTION.ADD_INVOICE:
       return [
         {
-          id: Utils.randomString(16),
+          id: `i_${Utils.randomString(10)}`,
           clientName: invoice.clientName,
           created: Date.now(),
           amount: parseInt(invoice.amount, 10)

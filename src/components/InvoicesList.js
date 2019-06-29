@@ -62,7 +62,7 @@ class InvoicesList extends Component {
           <h4 className='title is-4 has-text-white is-clearfix'>
             Invoices
             <span
-              className='button is-primary is-inverted is-pulled-right is-outlined'
+              className='button is-link is-inverted is-pulled-right is-outlined'
               onClick={this.openInvoiceModal}
             >
               Add an Invoice

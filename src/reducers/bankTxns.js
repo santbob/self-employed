@@ -7,7 +7,7 @@ const bankTxnsReducer = (state = [], action) => {
     case ACTION.ADD_BANK_TXN:
       return [
         {
-          id: Utils.randomString(16),
+          id: `b_${Utils.randomString(10)}`,
           description: txn.description,
           invoiceId: txn.invoiceId,
           created: Date.now(),
