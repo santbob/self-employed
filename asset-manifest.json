@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/self-employed/static/css/main.e6fafe9d.chunk.css",
+    "main.js": "/self-employed/static/js/main.cd077049.chunk.js",
+    "main.js.map": "/self-employed/static/js/main.cd077049.chunk.js.map",
+    "runtime~main.js": "/self-employed/static/js/runtime~main.28453486.js",
+    "runtime~main.js.map": "/self-employed/static/js/runtime~main.28453486.js.map",
+    "static/js/2.34805d88.chunk.js": "/self-employed/static/js/2.34805d88.chunk.js",
+    "static/js/2.34805d88.chunk.js.map": "/self-employed/static/js/2.34805d88.chunk.js.map",
+    "index.html": "/self-employed/index.html",
+    "precache-manifest.30c01e5f93670ba909dba35787102187.js": "/self-employed/precache-manifest.30c01e5f93670ba909dba35787102187.js",
+    "service-worker.js": "/self-employed/service-worker.js",
+    "static/css/main.e6fafe9d.chunk.css.map": "/self-employed/static/css/main.e6fafe9d.chunk.css.map"
+  }
+}
