@@ -19,10 +19,6 @@ const bankTxnsReducer = (state = [], action) => {
       return state.map(t => {
         return t.id === txn.id ? { ...txn } : t;
       });
-    // case ACTION.DELETE_TXN:
-    //   return state.filter(t => {
-    //     return t.id !== txn.id;
-    //   });
     default:
       return state;
   }
