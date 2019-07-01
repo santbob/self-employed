@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { InvoiceShape, BankTxnShape } from './SharedProptypeShapes';
 import * as Utils from '../utils';
 
 const N_DAYS = 30;
@@ -54,5 +56,10 @@ function mapStateToProps({ invoices, bankTxns }) {
   return { invoices, bankTxns };
 }
 
+FinancialSummary.propTypes = {
+  invoices: PropTypes.arrayOf(InvoiceShape).isRequired,
+  bankTxns: PropTypes.arrayOf(BankTxnShape).isRequired,
+  clz: PropTypes.string
+};
 //wrapping the BankTransactions components with React Redux connect with maps the state as props for the components
 export default connect(mapStateToProps)(FinancialSummary);

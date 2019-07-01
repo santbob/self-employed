@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import * as Utils from '../utils';
 import Pagination from './Pagination';
+import PropTypes from 'prop-types';
 
 const TYPE_DATE = 'date';
 const TYPE_MONEY = 'money';
+const TYPE_TEXT = 'text';
 //const TYPE_LINK = 'link';
 //const TYPE_IMAGE = 'image';
 
@@ -15,7 +17,7 @@ class DataTable extends Component {
   };
 
   buildColumnHtml = (column, rowData, colIndex, rowIndex) => {
-    const { type = 'text' } = column;
+    const { type = TYPE_TEXT } = column;
     const { tableKey } = this.props;
     let columnContent;
     if (column.colCallback) {
@@ -142,4 +144,18 @@ class DataTable extends Component {
   }
 }
 
+DataTable.propTypes = {
+  rows: PropTypes.array.isRequired,
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      type: PropTypes.oneOf([TYPE_DATE, TYPE_MONEY, TYPE_TEXT]),
+      colCallback: PropTypes.func,
+      clz: PropTypes.string
+    })
+  ).isRequired,
+  tableKey: PropTypes.string.isRequired,
+  tableClz: PropTypes.string
+};
 export default DataTable;

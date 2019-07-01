@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
+import PropTypes from 'prop-types';
 import { addBankTxn } from '../actions';
 import BankTransactionForm from './BankTransactionForm';
 import DataTable from './DataTable';
+import { BankTxnShape, InvoiceShape } from './SharedProptypeShapes';
 
 class BankTransactions extends Component {
   constructor(props) {
@@ -102,6 +104,11 @@ function mapStateToProps({ bankTxns, invoices }) {
   return { bankTxns, invoices };
 }
 
+BankTransactions.propTypes = {
+  invoices: PropTypes.arrayOf(InvoiceShape).isRequired,
+  bankTxns: PropTypes.arrayOf(BankTxnShape).isRequired,
+  clz: PropTypes.string
+};
 //wrapping the BankTransactions components with React Redux connect with maps the state as props for the components
 export default connect(
   mapStateToProps,

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { InvoiceShape } from './SharedProptypeShapes';
 
 class BankTransactionForm extends Component {
   constructor(props) {
@@ -124,5 +126,11 @@ class BankTransactionForm extends Component {
     );
   }
 }
+
+BankTransactionForm.propTypes = {
+  invoices: PropTypes.arrayOf(InvoiceShape).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default BankTransactionForm;

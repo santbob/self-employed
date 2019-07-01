@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as Utils from '../utils';
+import { InvoiceShape } from './SharedProptypeShapes';
 
 // The component used to create or edit an invoice.
 class InvoiceForm extends Component {
@@ -113,5 +115,11 @@ class InvoiceForm extends Component {
     );
   }
 }
+
+InvoiceForm.propTypes = {
+  invoice: InvoiceShape,
+  onSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 export default InvoiceForm;
