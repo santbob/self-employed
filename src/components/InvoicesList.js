@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import * as Utils from '../utils';
 import InvoiceForm from './InvoiceForm';
 import { addInvoice, updateInvoice } from '../actions';
+import DataTable from './DataTable';
 
 class InvoicesList extends Component {
   constructor(props) {
@@ -18,13 +18,12 @@ class InvoicesList extends Component {
     selectedInvoice: null
   };
 
-  handleInvoiceEdit = event => {
-    const tr = event.target.parentElement;
-    const { invoices } = this.props;
-    if (tr && tr.tagName === 'TR' && tr.id) {
-      this.openInvoiceModal(invoices[tr.rowIndex - 1]);
+  handleInvoiceEdit = inv => {
+    if (inv) {
+      this.openInvoiceModal(inv);
     }
   };
+
   openInvoiceModal(inv) {
     this.setState({ isModalOpen: true, selectedInvoice: inv });
   }
@@ -55,7 +54,35 @@ class InvoicesList extends Component {
         paidInvoicesMap[txn.invoiceId] += txn.amount;
       }
     });
-
+    // column configuration for the DataTable
+    const columns = [
+      {
+        title: 'Date',
+        type: 'date',
+        key: 'created'
+      },
+      {
+        title: 'Id',
+        key: 'id'
+      },
+      {
+        title: 'Client Name',
+        key: 'clientName'
+      },
+      {
+        title: 'Amount',
+        type: 'money',
+        key: 'amount'
+      },
+      {
+        title: 'Status',
+        key: 'status',
+        colCallback: row => {
+          return row.amount === paidInvoicesMap[row.id] ? 'PAID' : 'NOT PAID';
+        },
+        clz: 'has-text-centered'
+      }
+    ];
     return (
       <div className={clz}>
         <header className='has-background-grey-dark'>
@@ -69,32 +96,13 @@ class InvoicesList extends Component {
             </span>
           </h4>
         </header>
-        <table className='table is-fullwidth is-striped'>
-          <thead className='has-background-grey-dark'>
-            <tr>
-              <th className='has-text-white'>Date</th>
-              <th className='has-text-white'>Id</th>
-              <th className='has-text-white'>Client Name</th>
-              <th className='has-text-white'>Amount</th>
-              <th className='has-text-white has-text-centered'>Status</th>
-            </tr>
-          </thead>
-          <tbody onClick={this.handleInvoiceEdit}>
-            {invoices.map(inv => (
-              <tr key={inv.id} id={inv.id}>
-                <td>{Utils.printDate(inv.created)}</td>
-                <td>{inv.id}</td>
-                <td>{inv.clientName}</td>
-                <td className='has-text-right'>
-                  {Utils.printAmount(inv.amount)}
-                </td>
-                <td className='has-text-centered'>
-                  {inv.amount === paidInvoicesMap[inv.id] ? 'PAID' : 'NOT PAID'}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          columns={columns}
+          rows={invoices}
+          onRowClick={this.handleInvoiceEdit}
+          tableClz='has-background-grey-dark'
+          tableKey='inv'
+        />
         <ReactModal
           className='Modal'
           overlayClassName='Overlay'

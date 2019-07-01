@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
-import * as Utils from '../utils';
 import { addBankTxn } from '../actions';
 import BankTransactionForm from './BankTransactionForm';
+import DataTable from './DataTable';
 
 class BankTransactions extends Component {
   constructor(props) {
@@ -36,6 +36,27 @@ class BankTransactions extends Component {
   render() {
     const { bankTxns, clz, invoices } = this.props;
     const { isModalOpen } = this.state;
+
+    const columns = [
+      {
+        title: 'Date',
+        type: 'date',
+        key: 'created'
+      },
+      {
+        title: 'Invoice',
+        key: 'invoiceId'
+      },
+      {
+        title: 'Description',
+        key: 'description'
+      },
+      {
+        title: 'Amount',
+        type: 'money',
+        key: 'amount'
+      }
+    ];
     return (
       <div className={clz}>
         <header className='has-background-grey'>
@@ -49,28 +70,13 @@ class BankTransactions extends Component {
             </span>
           </h4>
         </header>
-        <table className='table is-striped is-fullwidth'>
-          <thead className='has-background-grey'>
-            <tr>
-              <th className='has-text-white'>Date</th>
-              <th className='has-text-white'>Invoice Id</th>
-              <th className='has-text-white'>Description</th>
-              <th className='has-text-white'>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bankTxns.map(txn => (
-              <tr key={txn.id}>
-                <td>{Utils.printDate(txn.created)}</td>
-                <td>{txn.invoiceId}</td>
-                <td>{txn.description}</td>
-                <td className='has-text-right'>
-                  {Utils.printAmount(txn.amount)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          columns={columns}
+          rows={bankTxns}
+          onRowClick={this.onRowClick}
+          tableClz='has-background-grey'
+          tableKey='bnkTxn'
+        />
         <ReactModal
           className='Modal'
           overlayClassName='Overlay'
